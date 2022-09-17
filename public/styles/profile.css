@@ -1,0 +1,22 @@
+.profile-container{
+    margin:auto;
+    margin-top:10%;
+    background-color: aqua;
+    display: flex;
+    width: fit-content;
+    padding:10px;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.profile-image{
+    width: 200px;
+    height:200px;
+    border-radius:50%;
+}
+
+.profile-property{
+    list-style:disc;
+}

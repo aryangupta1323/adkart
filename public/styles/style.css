@@ -55,7 +55,7 @@ section{
 
 /* Header */
 .container{
-  max-width: 1068px;
+  max-width: 1200px;
   margin-left:auto;
   margin-right:auto;
 }
@@ -64,6 +64,9 @@ section{
   align-items: center;
   justify-content: space-between;
   padding: 20px 35px;
+}
+.nav a i{
+  font-size: 40px;
 }
 .logo{
   display: flex;

@@ -36,6 +36,6 @@ router.post('/delete/:propId',checkLogin,adminController.postDeleteProperty)
 
 router.get('/your-properties',checkLogin,adminController.getYourProperties)
 
-
+router.get('/profile',checkLogin,adminController.getProfile)
 
 module.exports=router

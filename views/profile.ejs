@@ -1,0 +1,20 @@
+<%- include('./elements/header.ejs') %> 
+<link rel="stylesheet" href="styles/profile.css">
+</head>
+<body onload="lp()">
+    <%- include('./elements/nav.ejs',{pageTitle:pageTitle,errorMsg:errorMsg}) %> 
+    <div class="profile-container">
+    <h1>Your Profile</h1>
+    <img class='profile-image'src="https://images.pexels.com/photos/13193334/pexels-photo-13193334.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="">
+    <span><b>First Name:</b> <%= user.firstName %> </span>
+    <span><b>Last Name:</b> <%= user.lastName %></span>
+    <span><b>Contact:</b> <%= user.contact %></span>
+    <span><b>Email: </b><%= user.email %></span>
+    <span><b>Properties Added</b></span>
+    <ul>
+     <%   properties.forEach(property=>{ %>
+            <li class="profile-property"><%= property.address %></li>
+     <%   }) %>
+    </ul>
+</div>
+<%- include('./elements/footer.ejs') %> 

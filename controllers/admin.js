@@ -84,3 +84,24 @@ exports.postDeleteProperty=(req,res,next)=>{
       console.log("You dont have access to delete this property")
    }
 }
+
+exports.getProfile=(req,res,next)=>{
+   User.findOne({_id:req.session.user._id}).then(user=>{
+      console.log(user)
+      if(user){
+         Property.find({userId:user._id}).then(properties=>{
+            if(properties)
+               res.render('profile',{pageTitle:"Your Profile",user:user,properties:properties})
+            
+      }).catch(err=>{
+         console.log(err)
+      })
+      }
+      else{
+         res.redirect('/')
+      }
+   }).catch(err=>{
+      console.log(err)
+   })
+   
+}
