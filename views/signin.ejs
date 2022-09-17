@@ -1,0 +1,38 @@
+<%- include('./elements/header.ejs') %>
+<link rel="stylesheet" href="/styles/form.css">
+</head>
+<body onload="lp()"> 
+    <%- include('./elements/nav.ejs',{pageTitle:pageTitle,errorMsg:errorMsg}) %> 
+    <div class="form1">
+        <div class="left">
+          <a href="" class="form-logo"><i class='bx bx-home'></i>Adkart</a>
+        </div>
+        <div class="details">
+         <h1>SignIn</h1>
+         <% if(errorMsg.length>0){%> 
+            <div class="eMsg">
+              <%= errorMsg[0] %> 
+            </div>
+            <% } %> 
+         <form action="/signin" method="POST" autocomplete="off">
+            <div class="fname">
+                <input type="text" name="fname" value="<%= oldInput.fname?oldInput.fname:null%>" required="true" placeholder="First Name">
+            </div>
+            <div class="lname">
+               <input type="text" name="lname" value="<%= oldInput.lname?oldInput.lname:null %>" required="true" placeholder="LastName">
+            </div>
+            <div class="email">
+                <input type="email" name="email" value="<%= oldInput.email?oldInput.email:null %>" required="true" placeholder="Email">
+            </div>
+            <div class="contact">
+               <input type="number" name="contact"  value="<%= oldInput.contact?+oldInput.contact:null %>" required="true" placeholder="Contact No">
+            </div>
+            <div class="password">
+               <input type="password" name="password" value="<%= oldInput.password?+oldInput.password:null %>" required="true" placeholder="Password">
+            </div>
+            <button type="submit" class="submitBtn">Submit</button>
+            <p class="form-footer">Registered User? <a href="/login">Login</a></p>
+        </form>
+        </div>
+      </div>
+    <%- include('./elements/footer.ejs') %> 

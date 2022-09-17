@@ -1,0 +1,41 @@
+<%- include('./elements/header.ejs') %>
+<link rel="stylesheet" href="/styles/properties.css">
+</head>
+<body onload="lp()"> 
+    <%- include('./elements/nav.ejs',{pageTitle:pageTitle,errorMsg:errorMsg}) %> 
+  <!-- Properties-->
+
+<section class="properties container" id="properties">
+<div class="heading">
+<h2>Your Properties</h2>
+</div>
+<div class="properties-container container">
+
+<% if (properties.length) { %>
+<% properties.forEach(property=>{ %>
+    <div class="box">
+        <img src="/<%= property.imgPath.split('\\')[6] %> " alt="">
+        <h3><%= property.rent %> </h3>
+        <div class="content">
+            <div class="text">
+                <h3><%= property.address %> </h3>
+                <p><%= property.city %> </p>
+            </div>
+            <div class="icon">
+                <i class="bx bx-bed"><span><%= property.bed %> </span></i>
+                <i class="bx bx-bath"><span><%= property.washroom %> </span></i>
+            </div>
+        </div>
+        <form action="/delete/<%= property._id %>" method="POST">
+            <input type="hidden" value="<%= property.userId %>" name="userId">
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+<%}) %> 
+<% } else { %>
+ <h1> No Property Yet!</h1>
+ <h2>Click here to add one → </h2>
+ <a href="/add-property"><button class="btn">Add Property</button></a>
+<% } %>
+</div>
+<%- include('./elements/footer.ejs') %> 

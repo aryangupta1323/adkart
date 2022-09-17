@@ -1,0 +1,83 @@
+ <%- include("./elements/header.ejs") %> 
+ <link rel="stylesheet" href="/styles/properties.css">
+  </head>
+  <body>
+
+  <div class=header>
+    <a href="/" class="prop-logo"><i class='bx bx-home'></i>Adkart</a>
+  </div>
+  <!-- Properties-->
+
+<section class="properties container" id="properties">
+<div class="heading">
+<h2>Our Featured Properties</h2>
+</div>
+<div class="properties-container container">
+<!-- box 1 -->
+<!-- <div class="box"  hidden>
+    <img src="https://media-cldnry.s-nbcnews.com/image/upload/newscms/2018_30/1355945/home-exterior-today-180726-tease.jpg" alt="">
+    <h3>dsf </h3>
+    <div class="content">
+        <div class="text">
+            <h3>dsf</h3>
+            <p> dsf</p>
+        </div>
+        <div class="icon">
+            <i class="bx bx-bed"><span>dsf </span></i>
+            <i class="bx bx-bath"><span> dsf</span></i>
+        </div>
+    </div>
+</div>
+<div class="box"  hidden>
+    <img src="https://media-cldnry.s-nbcnews.com/image/upload/newscms/2018_30/1355945/home-exterior-today-180726-tease.jpg" alt="">
+    <h3> dsf</h3>
+    <div class="content">
+        <div class="text">
+            <h3>dsf</h3>
+            <p> dsf</p>
+        </div>
+        <div class="icon">
+            <i class="bx bx-bed"><span> dsf</span></i>
+            <i class="bx bx-bath"><span>dsf </span></i>
+        </div>
+    </div>
+</div>
+<div class="box"  hidden>
+    <img src="https://media-cldnry.s-nbcnews.com/image/upload/newscms/2018_30/1355945/home-exterior-today-180726-tease.jpg" alt="">
+    <h3>dsf </h3>
+    <div class="content">
+        <div class="text">
+            <h3>dsfafds </h3>
+            <p>dfsasd</p>
+        </div>
+        <div class="icon">
+            <i class="bx bx-bed"><span>32</span></i>
+            <i class="bx bx-bath"><span>sdfaf </span></i>
+        </div>
+    </div>
+</div> -->
+<% if (properties.length) { %>
+<% properties.forEach(property=>{ %>
+    <div class="box">
+        <img src="/<%= property.imgPath.split('\\')[6] %> " alt="">
+        <h3><%= property.price %> </h3>
+        <div class="content">
+            <div class="text">
+                <h3><%= property.address %> </h3>
+                <p><%= property.city %> </p>
+            </div>
+            <div class="icon">
+                <i class="bx bx-bed"><span><%= property.bed %> </span></i>
+                <i class="bx bx-bath"><span><%= property.washroom %> </span></i>
+            </div>
+        </div>
+        <a href="/property/<%= property._id %> "><button>Details</button></a>
+    </div>
+<%}) %> 
+<% } else { %>
+ <h1> No Property Yet!</h1>
+ <h2>Click here to add one →</h2>
+ <a href="/add-property"><button class="btn">Add Property</button></a>
+<% } %>
+</div>
+<%- include('./elements/footer.ejs') %> 

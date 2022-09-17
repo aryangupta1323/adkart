@@ -1,0 +1,51 @@
+<%- include('./elements/header.ejs') %> 
+<link rel="stylesheet" href="/styles/form.css">
+</head>
+<body onload="lp()">
+    <%- include('./elements/nav.ejs',{pageTitle:pageTitle,errorMsg:errorMsg}) %> 
+    <!-- <h1>Add Property Details Below</h1> -->
+  <div class="form1">
+    <div class="left">
+      <a href="" class="form-logo"><i class='bx bx-home'></i>Adkart</a>
+    </div>
+    <div class="details">
+     <h1>Enter Details Below</h1>
+     <% if(errorMsg.length>0){%> 
+        <div class="eMsg">
+          <%= errorMsg[0] %> 
+        </div>
+        <% } %> 
+     <form action="/add-property" method="POST" style="margin-top:50px" enctype="multipart/form-data" autocomplete="off">
+        <div class="address">
+            <input name="address" placeholder="Address" value="<%= oldInput.propAddress?oldInput.propAddress:null%>" required="true" >
+        </div>
+        <div class="city">
+           <input  name="city" value="<%= oldInput.propCity?oldInput.propCity:null %>" required="true" placeholder="City">
+        </div>
+        <div class="Year">
+            <input type="number" name="year" value="<%= oldInput.propYear?+oldInput.propYear:null %>" required="true" placeholder="Year">
+        </div>
+        <div class="bedrooms">
+           <input type="number" name="bed"  value="<%= oldInput.propBed?+oldInput.propBed:null %>" required="true" placeholder="Bedrooms">
+        </div>
+        <div class="bathrooms">
+           <input type="number" name="washroom" value="<%= oldInput.propWashroom?+oldInput.propWashroom:null %>" required="true" placeholder="Bathrooms">
+        </div>
+        <div class="Rent">
+            <input type="text" name="rent" value="<%= oldInput.propRent?+oldInput.propRent:null %>" required="true" placeholder="Rent">
+        </div>
+        <div>
+            <input class="input-des" type="text" name="description" value="<%= oldInput.propDescription?oldInput.propDescription:null %>" placeholder="Description" >
+        </div>
+        <div>
+            <label for="images">Image:</label>
+            <input type="file" name="image" required="true">
+        </div>
+        
+        <button type="submit" class="submitBtn">Submit</button>
+    </form>
+    </div>
+  </div>
+</body>
+</html>
+    <%- include('./elements/footer.ejs') %> 

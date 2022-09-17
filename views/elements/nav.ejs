@@ -1,0 +1,36 @@
+    <!-- Navbar -->
+     <div id="loading"></div> 
+    <header>
+        <div class="nav container">
+          <!-- Logo -->
+          <a href="/" class="logo"><i class='bx bx-home'></i>Adkart</a>
+          <!-- Menu Icon -->
+          <!-- <input type="checkbox" name="" id="menu">
+          <label for="menu" <i class='bx bx-menu' id="menu-icon" ></i></label> -->
+          <!-- Nav List -->
+          <ul class="navbar">
+            <li><a href="/">Home</a></li>
+            <!-- <li><a href="#about">About Us</a></li>
+            <li><a href="#sales">Sales</a></li> -->
+            <% if(isAuthenticated){ %> 
+            <li><a href="/add-property">Add Property</a></li>
+            <li><a href="/your-properties">Your Properties</a></li>
+            <% } %> 
+            <li><a href="/all-properties">Properties</a></li>
+          </ul>
+          <!-- Log In Button -->
+          <% if(isAuthenticated){ %> 
+            <form action="/logout"  method="post">
+                <button type="submit" class="btn">Log Out</button>
+            </form>
+            <!-- <a class="btn">log Out</a> -->
+            <% } else{%> 
+          <a href="/login" class="btn">log In</a>
+          <% } %> 
+        </div>
+    </header>
+    <!-- <% if(errorMsg.length>0){%> 
+    <div style="margin-top:100px;background-color:red;color:aquamarine;padding:10px;">
+      <%= errorMsg[0] %> 
+    </div>
+    <% } %>  -->
