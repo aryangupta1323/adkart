@@ -24,6 +24,9 @@ const userSchema=new Schema({
     },
     token:{
         type:String
+    },
+    imgPath:{
+        type:String
     }
 })
 

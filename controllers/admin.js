@@ -105,3 +105,19 @@ exports.getProfile=(req,res,next)=>{
    })
    
 }
+
+exports.postProfile=(req,res,next)=>{
+   console.log(req.file)
+   const imgPath=req.file.path
+
+   User.findOne({_id:req.session.user._id}).then(user=>{
+      console.log(user)
+      if(user){
+         user.imgPath=imgPath
+         user.save()
+         res.redirect('/profile')
+      }
+   }).catch(err=>{
+      console.log(err)
+   })
+}
