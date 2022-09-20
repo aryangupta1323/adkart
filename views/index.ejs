@@ -48,7 +48,7 @@
           <!-- box 1 -->
           <% properties.forEach(prop=>{ %> 
           <div class="box">
-            <img src="/property-images/<%= prop.imgPath.split('\\')[7] %>" alt="">
+            <img src="/property-images/<%= prop.imgPath[0].imageUrl.split('\\')[7] %>" alt="">
             <h3>Rs.<%= prop.rent %> </h3>
             <div class="content">
               <div class="text">

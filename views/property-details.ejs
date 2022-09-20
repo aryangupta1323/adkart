@@ -1,0 +1,9 @@
+<%- include('./elements/header.ejs') %>
+
+</head>
+<body onload="lp()">
+    <%- include('./elements/nav.ejs',{pageTitle:pageTitle,errorMsg:errorMsg})%>
+    <% property.imgPath.forEach(urls=>{ %>
+        <img src="/property-images/<%= urls.imageUrl.split('\\')[7] %> " alt="">
+    <%})%>
+<%- include('./elements/footer.ejs') %> 
