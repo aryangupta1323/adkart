@@ -1,0 +1,137 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Position the image container (needed to position the left and right arrows) */
+  .details-container {
+    background-color: #EAEAEA;
+    margin: auto;
+    margin-top: 100px;
+    width:80vw;
+    position: relative;
+    padding:50px 100px;
+    border-radius: 20px;
+  }
+  .details-container h1{
+    margin-bottom: 40px ;
+    color:#00ABB3;
+  }
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+    width:100%;
+    height:400px;
+    overflow: hidden;
+    text-align: center;
+  }
+  .mySlides img{
+    height: 100%;
+    width: fit-content;
+    object-fit:cover;
+  }
+  /* Add a pointer when hovering over the thumbnail images */
+  .cursor {
+    cursor: pointer;
+  }
+  
+  /* Next & previous buttons */
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 100px;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+  
+  /* Container for image text */
+  .caption-container {
+    text-align: center;
+    background-color: #222;
+    padding: 2px 16px;
+    color: white;
+  }
+  .row{
+    overflow:auto;
+    margin: auto;
+    
+    }
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Six columns side by side */
+  .column img{
+    height: 100px;
+    width: fit-content;
+    float: left;
+  }
+  
+  /* Add a transparency effect for thumnbail images */
+  .demo {
+    opacity: 0.6;
+  }
+  
+  .active,
+  .demo:hover {
+    opacity: 1;
+  }
+
+  .property-details{
+    margin: 50px 0;
+    border-radius: 10px;
+    width:100%;
+    height:150px;
+    background-color:#3C4048 ;
+    display: flex;
+    text-align: justify;
+  }
+  .property-details .detail{
+    padding:20px 10px;
+    width:25%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .property-details .detail p{
+    text-align: center;
+    color:white;
+  }
+  .property-details .detail p.value{
+    color:#EAEAEA;
+    font-size: 30px;
+    text-align: center;
+    color:white;
+  }

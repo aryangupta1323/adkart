@@ -3,25 +3,27 @@
 </head>
 <body onload="lp()">
     <%- include('./elements/nav.ejs',{pageTitle:pageTitle,errorMsg:errorMsg}) %> 
-    <div class="profile-container">
-    <h1>Your Profile</h1>
+   <div class="profile-container">
+    <!-- <h1>Your Profile</h1> -->
+    <div class="user-image">
     <form action="/profile" method="post" enctype="multipart/form-data">
     <div class="image-container">
     <img class='profile-image'  src="/profile-images/<%= user.imgPath?user.imgPath.split('\\')[7]:'image.png' %>"  alt="">
     </div>
-    <button type="button" onclick="document.querySelector('.profile-container input').click()"><i class='bx bxs-edit'></i></button>
+    <button type="button" onclick="document.querySelector('.profile-container .user-image input').click()"><i class='bx bxs-edit'></i></button>
     <input type="file" name='pimage' hidden onchange="form.submit()" >
-    
     </form>
-    <span><b>First Name:</b> <%= user.firstName %> </span>
-    <span><b>Last Name:</b> <%= user.lastName %></span>
-    <span><b>Contact:</b> <%= user.contact %></span>
-    <span><b>Email: </b> <%= user.email %></span>
+    </div>
+    <div class="user-details">
+    <h1><%= user.firstName %>  <%= user.lastName %> </h1>
+    <span><b>Email: </b> <%= user.email %></span><br>
+    <span><b>Contact:</b> <%= user.contact %></span><br>
     <span><b>Properties Added</b></span>
-    <ul>
+    <ol>
      <%   properties.forEach(property=>{ %>
             <li class="profile-property"><%= property.address %></li>
      <%   }) %>
-    </ul>
+    </ol>
+    </div>
 </div>
 <%- include('./elements/footer.ejs') %> 

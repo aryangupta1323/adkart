@@ -1,9 +1,56 @@
 <%- include('./elements/header.ejs') %>
-
+<link rel="stylesheet" href="/styles/property-details.css">
 </head>
 <body onload="lp()">
     <%- include('./elements/nav.ejs',{pageTitle:pageTitle,errorMsg:errorMsg})%>
-    <% property.imgPath.forEach(urls=>{ %>
-        <img src="/property-images/<%= urls.imageUrl.split('\\')[7] %> " alt="">
+    <div class="details-container">
+    <h1><%= property.address%>, <%= property.city%></h1>
+  <!-- Full-width images with number text -->
+  <% property.imgPath.forEach(urls=>{ %>
+    <div class="mySlides">
+        <img src="/property-images/<%= urls.imageUrl.split('\\')[7] %> ">
+    </div>
+<%})%>
+  
+
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+  <!-- Image text -->
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <!-- Thumbnail images -->
+  <div class="row">
+    <% property.imgPath.forEach((urls,index)=>{ %>
+        <div class="column">
+            <img class="demo cursor" src="/property-images/<%= urls.imageUrl.split('\\')[7] %> "  onclick="currentSlide('<%= index+1 %>')" alt="Cinque Terre">
+          </div>
     <%})%>
+  </div>
+
+  <div class="property-details">
+    <div class="detail">
+        <p class="value"><%= property.year %> </p>
+        <p class="type">Year</p>
+    </div>
+    <div class="detail">
+        <p class="value"><%= property.rent %> </p>
+        <p class="type">Rent</p>
+    </div>
+    <div class="detail">
+        <p class="value"><%= property.bed %> </p>
+        <p class="type"> Bed</p>
+    </div>
+    <div class="detail">
+        <p class="value"><%= property.washroom %> </p>
+        <p class="type">Washroom</p>
+    </div>
+  </div>
+  <h2>Description:</h2>
+  <p><%= property.description %></p>
+</div>
+
 <%- include('./elements/footer.ejs') %> 

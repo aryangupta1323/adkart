@@ -1,16 +1,18 @@
 .profile-container{
     margin:auto;
     margin-top:10%;
-    background-color: aqua;
+    background-color: #EAEAEA;
     display: flex;
-    width: fit-content;
-    padding:10px;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
+    width: 90vw;
+    padding:60px 30px ;
+    color:#3C4048;
+    /* text-align: center; */
+    /* align-items: center; */
     border-radius: 10px;
 }
-
+.user-image{
+    margin-right: 50px;
+}
 .profile-image{
     width: 100%;
     height: 100%;
@@ -21,9 +23,8 @@
     list-style:disc;
 }
 .image-container{
-    width:200px;
-    height:200px;
-    
+    width:400px;
+    height:400px;
 }
 .profile-container form{
     position:relative;
@@ -42,4 +43,9 @@
 .profile-container form  button i{
     font-size: 30px;
     color:black;
+}
+.user-details h1{
+    color:#00ABB3;
+    font-size: 60px;
+    margin-bottom: 30px;
 }
