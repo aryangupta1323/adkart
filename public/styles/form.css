@@ -53,7 +53,7 @@ h1{
   margin-bottom: 0;
 }
 form{
-    margin-top:0px;
+    margin-top:10px;
 }
 form div{
   margin:10px 0;
@@ -79,7 +79,7 @@ input::-webkit-input-placeholder {
     padding:3px; 
 }
 .submitBtn{
-  cursor: pointer;
+  /* cursor: pointer; */
   margin:20px 0;
   border-radius: 200px;
   width: 180px;

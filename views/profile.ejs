@@ -8,7 +8,7 @@
     <div class="user-image">
     <form action="/profile" method="post" enctype="multipart/form-data">
     <div class="image-container">
-    <img class='profile-image'  src="/profile-images/<%= user.imgPath?user.imgPath.split('\\')[7]:'image.png' %>"  alt="">
+    <img class='profile-image'  src="<%= user.imgPath?user.imgPath:'image.png' %>"  alt="">
     </div>
     <button type="button" onclick="document.querySelector('.profile-container .user-image input').click()"><i class='bx bxs-edit'></i></button>
     <input type="file" name='pimage' hidden onchange="form.submit()" >

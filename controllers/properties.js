@@ -3,7 +3,7 @@ const Property = require("../models/property").Property;
 exports.getIndex = (req, res, next) => {
 	Property.find()
 		.then((props) => {
-			console.log(props);
+			// console.log(props);
 			res.render("index", {
 				pageTitle: "Home",
 				properties: props,
@@ -20,7 +20,7 @@ exports.getIndex = (req, res, next) => {
 exports.getAllProperties = (req, res, next) => {
 	Property.find()
 		.then((props) => {
-			console.log(props);
+			// console.log(props);
 			res.render("all-properties", {
 				pageTitle: "Properties",
 				properties: props,

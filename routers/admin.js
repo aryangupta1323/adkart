@@ -37,11 +37,9 @@ const fileFilter = (req, file, cb) => {
 };
 
 const propertyUpload = multer({
-	storage: propertyFileStorage,
 	fileFilter: fileFilter,
 });
 const profileUpload = multer({
-	storage: profileFileStorage,
 	fileFilter: fileFilter,
 });
 const adminController = require("../controllers/admin");

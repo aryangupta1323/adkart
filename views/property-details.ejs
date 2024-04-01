@@ -8,7 +8,7 @@
   <!-- Full-width images with number text -->
   <% property.imgPath.forEach(urls=>{ %>
     <div class="mySlides">
-        <img src="/property-images/<%= urls.imageUrl.split('\\')[7] %> ">
+        <img src="<%= urls.imageUrl %> ">
     </div>
 <%})%>
   
@@ -26,7 +26,7 @@
   <div class="row">
     <% property.imgPath.forEach((urls,index)=>{ %>
         <div class="column">
-            <img class="demo cursor" src="/property-images/<%= urls.imageUrl.split('\\')[7] %> "  onclick="currentSlide('<%= index+1 %>')" alt="Cinque Terre">
+            <img class="demo cursor" src="<%= urls.imageUrl %> "  onclick="currentSlide('<%= index+1 %>')" alt="Cinque Terre">
           </div>
     <%})%>
   </div>

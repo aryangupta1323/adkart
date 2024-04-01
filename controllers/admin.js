@@ -1,11 +1,15 @@
 const { User } = require("../models/user");
 const { validationResult } = require("express-validator/check");
 const Property = require("../models/property").Property;
-// const firebase = require("../firebase"); // reference to our db
-// // const firestore = firebase.firestore(); // if using firestore
-// const { getStorage } = require("firebase/storage"); // must be required for this to work
-// const storage = getStorage().ref(); // create a reference to storage
-// global.XMLHttpRequest = require("xhr2"); // must be used to avoid bug
+
+const cloudinary = require("cloudinary").v2;
+let streamifier = require("streamifier");
+
+cloudinary.config({
+	cloud_name: "dksatozgl",
+	api_key: "758268333598911",
+	api_secret: "FRR0u1s3EXvDZtUNlEuhM1xBdTk",
+});
 
 exports.getAddProperty = (req, res, next) => {
 	res.render("add-property", {
@@ -14,14 +18,44 @@ exports.getAddProperty = (req, res, next) => {
 	});
 };
 
-exports.postAddProperty = (req, res, next) => {
+exports.postAddProperty = async (req, res, next) => {
 	console.log(req.body);
 	console.log(req.files);
 	const files = req.files;
 	const imagePath = [];
-	for (let i = 0; i < files.length; i++) {
-		imagePath.push({ imageUrl: files[i].path });
+	async function uploadFile(file) {
+		return new Promise((resolve, reject) => {
+			let cld_upload_stream = cloudinary.uploader.upload_stream(
+				{ folder: "properties" },
+				(error, result) => {
+					if (error) {
+						reject(error);
+					} else {
+						console.log(result);
+						console.log(result.secure_url, result.url);
+						resolve(result.secure_url); // Resolve with the URL
+					}
+				}
+			);
+			streamifier.createReadStream(file.buffer).pipe(cld_upload_stream);
+		});
 	}
+
+	async function uploadFiles(files) {
+		for (let i = 0; i < files.length; i++) {
+			try {
+				const url = await uploadFile(files[i]); // Wait for each file to be uploaded
+				imagePath.push({ imageUrl: url });
+			} catch (error) {
+				console.error("Upload failed for file:", files[i], error);
+				// Optionally, handle the error, e.g., by continuing with the next file
+			}
+		}
+		console.log(imagePath);
+	}
+
+	// Call uploadFiles with your files
+	const x = await uploadFiles(req.files);
 
 	// const timestamp = Date.now();
 	// const name = file.originalname.split(".")[0];
@@ -140,9 +174,41 @@ exports.getProfile = (req, res, next) => {
 		});
 };
 
-exports.postProfile = (req, res, next) => {
+exports.postProfile = async (req, res, next) => {
 	console.log(req.file);
-	const imgPath = req.file.path;
+	let imgPath;
+
+	async function uploadFile(file) {
+		return new Promise((resolve, reject) => {
+			let cld_upload_stream = cloudinary.uploader.upload_stream(
+				{ folder: "profile" },
+				(error, result) => {
+					if (error) {
+						reject(error);
+					} else {
+						// console.log(result);
+						// console.log(result.secure_url, result.url);
+						resolve(result.secure_url); // Resolve with the URL
+					}
+				}
+			);
+			streamifier.createReadStream(file.buffer).pipe(cld_upload_stream);
+		});
+	}
+
+	async function uploadFiles(file) {
+		try {
+			const url = await uploadFile(file); // Wait for each file to be uploaded
+			imgPath = url;
+		} catch (error) {
+			console.error("Upload failed for file:", file, error);
+			// Optionally, handle the error, e.g., by continuing with the next file
+		}
+		console.log(imgPath);
+	}
+
+	// Call uploadFiles with your files
+	const x = await uploadFiles(req.file);
 
 	User.findOne({ _id: req.session.user._id })
 		.then((user) => {

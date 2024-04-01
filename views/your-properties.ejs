@@ -14,7 +14,7 @@
 <% if (properties.length) { %>
 <% properties.forEach(property=>{ %>
     <div class="box">
-        <img src="/property-images/<%= property.imgPath[0].imageUrl.split('\\')[7] %> " alt="">
+        <img src="<%= property.imgPath[0].imageUrl %> " alt="">
         <h3><%= property.rent %> </h3>
         <div class="content">
             <div class="text">
