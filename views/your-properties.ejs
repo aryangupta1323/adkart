@@ -28,7 +28,7 @@
         </div>
         <form action="/delete/<%= property._id %>" method="POST">
             <input type="hidden" value="<%= property.userId %>" name="userId">
-            <button type="submit">Delete</button>
+            <button type="submit" class="property-delete-btn">Delete</button>
         </form>
     </div>
 <%}) %> 

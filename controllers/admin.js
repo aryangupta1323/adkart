@@ -6,9 +6,9 @@ const cloudinary = require("cloudinary").v2;
 let streamifier = require("streamifier");
 
 cloudinary.config({
-	cloud_name: "dksatozgl",
-	api_key: "758268333598911",
-	api_secret: "FRR0u1s3EXvDZtUNlEuhM1xBdTk",
+	cloud_name: process.env.CLOUD_NAME,
+	api_key: process.env.CLOUD_API_KEY,
+	api_secret: process.env.CLOUD_API_SECRET,
 });
 
 exports.getAddProperty = (req, res, next) => {
@@ -40,7 +40,6 @@ exports.postAddProperty = async (req, res, next) => {
 			streamifier.createReadStream(file.buffer).pipe(cld_upload_stream);
 		});
 	}
-
 	async function uploadFiles(files) {
 		for (let i = 0; i < files.length; i++) {
 			try {
