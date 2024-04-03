@@ -60,7 +60,7 @@ app.use((req, res, next) => {
 mongoose
 	.connect(process.env.MONGO_URL)
 	.then((res) => {
-		app.listen(3000, () => {
+		app.listen(3000, "0.0.0.0", () => {
 			console.log("server connected");
 		});
 		console.log("database connected");
